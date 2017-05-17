@@ -70,7 +70,7 @@ namespace UpyunSMSSDK.Common
                     request.Abort();
                 }
             }
-            Console.WriteLine(DateTime.Now.ToString("HH:mm:ss:ffff") + "---- HTTP请求返回 ----" + JsonConvert.SerializeObject(result));
+            Console.WriteLine(DateTime.Now.ToString("【HH:mm:ss:ffff】 ") + "---- HTTP请求返回 ----" + JsonConvert.SerializeObject(result));
             return result;
         }
     }

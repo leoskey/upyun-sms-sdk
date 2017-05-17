@@ -34,7 +34,7 @@ namespace UpyunSMSSDK.SMS
             {
                 result = JsonConvert.DeserializeObject<MessageResult>(response.Content);
             }
-            Console.WriteLine(DateTime.Now.ToString("HH:mm:ss:ffff") + "---- 请求内容返回 ----" + JsonConvert.SerializeObject(result));
+            Console.WriteLine(DateTime.Now.ToString("【HH:mm:ss:ffff】 ") + "---- 请求内容返回 ----" + JsonConvert.SerializeObject(result));
             return result;
         }
     }
