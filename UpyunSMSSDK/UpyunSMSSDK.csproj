@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2C44A601-3C56-4E6C-AB0D-BD8AB6E49456}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>UpyunSMS</RootNamespace>
-    <AssemblyName>UpyunSMS</AssemblyName>
+    <ProjectGuid>{603683FC-4459-42BD-9C98-5EF0E905BABF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UpyunSMSSDK</RootNamespace>
+    <AssemblyName>UpyunSMSSDK</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>Properties\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\UpyunSMS\Properties\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,17 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SendMessagesExample.cs" />
+    <Compile Include="Common\RequestHandler.cs" />
+    <Compile Include="Model\HttpMethod.cs" />
+    <Compile Include="Model\Message.cs" />
+    <Compile Include="Model\MessageResult.cs" />
+    <Compile Include="Model\RequestParame.cs" />
+    <Compile Include="Model\ResponseResult.cs" />
+    <Compile Include="SMS\SMSClient.cs" />
+    <Compile Include="UpyunSMSSDK.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UpyunSMSSDK\UpyunSMSSDK.csproj">
-      <Project>{603683FC-4459-42BD-9C98-5EF0E905BABF}</Project>
-      <Name>UpyunSMSSDK</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
