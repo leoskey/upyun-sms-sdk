@@ -33,16 +33,22 @@ namespace UpyunSMSSDK.Common
             HttpWebResponse response = null;
             try
             {
+                if (requestParame.HttpMethod == HttpMethod.GET)
+                {
+                    requestParame.APIUrl += "?" + JsonConvert.SerializeObject(requestParame.Parame);
+                }
                 request = (HttpWebRequest)WebRequest.Create(requestParame.APIUrl);
-                request.Method = "POST";
+                request.Method = requestParame.HttpMethod.ToString();
                 request.ContentType = "application/json";
                 request.Headers.Add("Authorization", requestParame.Token);
-                byte[] byteData = UTF8Encoding.UTF8.GetBytes(requestParame.Parame);
-                request.ContentLength = byteData.Length;
-                using (Stream stream = request.GetRequestStream())
+                if (requestParame.HttpMethod == HttpMethod.POST)
                 {
-                    stream.Write(byteData, 0, byteData.Length);
-                    stream.Close();
+                    byte[] byteData = UTF8Encoding.UTF8.GetBytes(requestParame.Parame);
+                    request.ContentLength = byteData.Length;
+                    using (Stream stream = request.GetRequestStream())
+                    {
+                        stream.Write(byteData, 0, byteData.Length);
+                    }
                 }
                 using (response = (HttpWebResponse)request.GetResponse())
                 {
@@ -61,16 +67,11 @@ namespace UpyunSMSSDK.Common
             }
             finally
             {
-                if (response != null)
-                {
-                    response.Close();
-                }
                 if (request != null)
                 {
                     request.Abort();
                 }
             }
-            Console.WriteLine(DateTime.Now.ToString("【HH:mm:ss:ffff】 ") + "---- HTTP请求返回 ----" + JsonConvert.SerializeObject(result));
             return result;
         }
     }

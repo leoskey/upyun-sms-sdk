@@ -9,12 +9,12 @@ namespace UpyunSMSSDK.Model
     /// <summary>
     /// 短信发送返回。
     /// </summary>
-    public class MessageResult
+    public class MessageResult : ResponseResult
     {
-        public List<MessageResultMate> message_ids { get; set; }
+        public List<MessageResultMeta> message_ids { get; set; }
     }
 
-    public class MessageResultMate
+    public class MessageResultMeta
     {
         public string error_code { get; set; }
 

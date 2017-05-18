@@ -46,6 +46,8 @@
     <Compile Include="Common\RequestHandler.cs" />
     <Compile Include="Model\HttpMethod.cs" />
     <Compile Include="Model\Message.cs" />
+    <Compile Include="Model\MessageReport.cs" />
+    <Compile Include="Model\MessageReportResult.cs" />
     <Compile Include="Model\MessageResult.cs" />
     <Compile Include="Model\RequestParame.cs" />
     <Compile Include="Model\ResponseResult.cs" />

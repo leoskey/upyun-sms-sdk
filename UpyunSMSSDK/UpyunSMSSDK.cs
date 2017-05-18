@@ -8,18 +8,39 @@ using UpyunSMSSDK.SMS;
 
 namespace UpyunSMSSDK
 {
+    /// <summary>
+    /// Upyun短信服务客户端
+    /// </summary>
     public class UpyunSMSClient
     {
         private SMSClient _smsClient = null;
 
-        public UpyunSMSClient(string apiUrl, string token)
+        /// <summary>
+        /// Upyun短信服务客户端
+        /// </summary>
+        /// <param name="token">Token</param>
+        public UpyunSMSClient(string token)
         {
-            this._smsClient = new SMSClient(apiUrl, token);
+            this._smsClient = new SMSClient(token);
         }
 
-        public MessageResult SendCode(Message message)
+        /// <summary>
+        /// 发送短信。
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public MessageResult SendMessages(Message message)
         {
             return _smsClient.SendMessages(message);
+        }
+
+        /// <summary>
+        /// 获取短信报表。
+        /// </summary>
+        /// <param name="messageReport"></param>
+        /// <returns></returns>
+        public MessageReportResult GetMessagesReport(MessageReport messageReport) {
+            return _smsClient.GetMessgesReport(messageReport);
         }
     }
 }

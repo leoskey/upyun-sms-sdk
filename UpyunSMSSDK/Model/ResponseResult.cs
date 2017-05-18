@@ -10,7 +10,7 @@ namespace UpyunSMSSDK.Model
     /// <summary>
     /// 请求响应结果。
     /// </summary>
-    internal class ResponseResult
+    public class ResponseResult
     {
         /// <summary>
         /// HTTP状态。
