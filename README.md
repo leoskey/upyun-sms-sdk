@@ -8,7 +8,7 @@
 using UpyunSMSSDK;
 using UpyunSMSSDK.Model;
 ```
-在(Upyun)[https://sms.upyun.com/settings]上获取你的Token，它很关键。然后，实例化一个UpyunSMSClient对象。
+在[Upyun](https://sms.upyun.com/settings)上获取你的Token，它很关键。然后，实例化一个UpyunSMSClient对象。
 ```csharp
 var token = "***********************";
 var client = new UpyunSMSClient(token);
