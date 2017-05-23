@@ -33,7 +33,7 @@ var messageReportResult = client.GetMessagesReport(messageReport);
 在返回的对象中，包含着```StatusCode```和```error_code```这两个属性,```StatusCode```是枚举类型```HttpStatusCode```:
 ```csharp
 var result = client.SendMessages(message);
-if ( result.StatusCode == HttpStatusCode.OK && error_code == null ) {
+if ( result.StatusCode == HttpStatusCode.OK && error_code != null ) {
     // 发送成功
 } else {
     // 发送失败
