@@ -1,15 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace UpyunSMSSDK.Model
 {
-    public class MessageReportResult : ResponseResult
+    public class MessageReportResult : IResponeResult
     {
-        public List<MessageReportResultMeta> messages { get; set; }
         public int? total { get; set; }
+        public HttpStatusCode StatusCode { get; set; }
+        public string StatusDescription { get; set; }
+        public string Content { get; set; }
+        public string error_code { get; set; }
+        public string message { get; set; }
+        /// <summary>
+        /// 报表信息。
+        /// </summary>
+        public List<MessageReportResultMeta> messages { get; set; }
     }
 
     public class MessageReportResultMeta

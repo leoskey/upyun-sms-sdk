@@ -20,10 +20,10 @@ namespace UpyunSMS
             var client = new UpyunSMSClient(token);
 
             // 发送短信。
-            var message = new Message("18888888888", "78", "1|注册");
+            var message = new Message("18888888888,18888888885", "11911", "参数1|参数2");
             var messageResult = client.SendMessages(message);
             Console.WriteLine(DateTime.Now.ToString("【HH:mm:ss:ffff】 ") + "---- 请求返回 ----" + JsonConvert.SerializeObject(messageResult));
-
+            
             // 获取短信报表。
             var messageReport = new MessageReport();
             var messageReportResult = client.GetMessagesReport(messageReport);
@@ -31,8 +31,7 @@ namespace UpyunSMS
             {
                 Console.WriteLine(DateTime.Now.ToString("【HH:mm:ss:ffff】 ") + JsonConvert.SerializeObject(item));
             }
-
-
+            
         }
     }
 }

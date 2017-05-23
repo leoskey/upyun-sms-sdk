@@ -14,24 +14,24 @@ namespace UpyunSMSSDK.Model
         /// <summary>
         /// 请求方式。
         /// </summary>
-        public HttpMethod HttpMethod { get; set; }
+        internal HttpMethod HttpMethod { get; set; }
 
         /// <summary>
         /// 请求地址。
         /// </summary>
-        public string APIUrl { get; set; }
+        internal string APIUrl { get; set; }
 
         /// <summary>
         /// 请求参数。
         /// </summary>
-        public string Parame { get; set; }
+        internal string Parame { get; set; }
 
         /// <summary>
         /// 平台Token。
         /// </summary>
-        public string Token { get; set; }
+        internal string Token { get; set; }
 
-        public RequestParame(HttpMethod httpMethod, string apiUrl, string token, string parame)
+        internal RequestParame(HttpMethod httpMethod, string apiUrl, string token, string parame)
         {
             this.HttpMethod = httpMethod;
             this.APIUrl = apiUrl;

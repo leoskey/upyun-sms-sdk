@@ -1,7 +1,7 @@
 # upyun-sms-sdk
 又拍云短信服务平台接口.NET C# SDK
 
-## 如何使用
+## 使用
 
 将这个生成DLL文件引用进你的项目。对了，无论如何，你还得引用Newtonsoft.Json这个玩意儿弄进的项目。
 ```csharp
@@ -27,6 +27,18 @@ var messageResult = client.SendMessages(message);
 ```csharp
 var messageReport = new MessageReport();
 var messageReportResult = client.GetMessagesReport(messageReport);
+```
+
+## 确定短信是否发送成功
+在返回的对象中，包含着```StatusCode```和```error_code```这两个属性,```StatusCode```是枚举类型```HttpStatusCode```:
+```csharp
+var result = client.SendMessages(message);
+if ( result.StatusCode == HttpStatusCode.OK && error_code == null ) {
+    // 发送成功
+} else {
+    // 发送失败
+    // result.error_code和result.message包含着错误信息。
+}
 ```
 
 ## 提示

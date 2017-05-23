@@ -67,19 +67,5 @@ namespace UpyunSMSSDK.Model
             }
         }
         private string Vars;
-
-        /// <summary>
-        /// 验证参数。
-        /// </summary>
-        /// <returns></returns>
-        internal bool IsVaild()
-        {
-            var flag = true;
-            if (string.IsNullOrWhiteSpace(this.mobile) || string.IsNullOrWhiteSpace(this.template_id))
-            {
-                flag = false;
-            }
-            return flag;
-        }
     }
 }

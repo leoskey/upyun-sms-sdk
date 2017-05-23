@@ -30,19 +30,26 @@ namespace UpyunSMSSDK.SMS
         public MessageResult SendMessages(Message message)
         {
             var result = new MessageResult();
-            if (!message.IsVaild())
-            {
-                result.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                result.StatusDescription = "参数不正确";
-                return result;
-            }
-
             var var = JsonConvert.SerializeObject(message);
             var para = new RequestParame(HttpMethod.POST, _messageUrl, _token, var);
             var response = new RequestHandler(para).GetResponse();
             if (!string.IsNullOrWhiteSpace(response.Content))
             {
-                result = JsonConvert.DeserializeObject<MessageResult>(response.Content);
+                try
+                {
+                    result.message_ids = JsonConvert.DeserializeObject<List<MessageResultMeta>>(response.Content);
+                }
+                catch (Exception)
+                {
+                    try
+                    {
+                        result = JsonConvert.DeserializeObject<MessageResult>(response.Content);
+                    }
+                    catch (Exception)
+                    {
+                        result.message_ids = null;
+                    }
+                }
                 result.StatusCode = response.StatusCode;
                 result.StatusDescription = response.StatusDescription;
             }
@@ -62,7 +69,21 @@ namespace UpyunSMSSDK.SMS
             var response = new RequestHandler(para).GetResponse();
             if (!string.IsNullOrWhiteSpace(response.Content))
             {
-                result = JsonConvert.DeserializeObject<MessageReportResult>(response.Content);
+                try
+                {
+                    result.messages = JsonConvert.DeserializeObject<List<MessageReportResultMeta>>(response.Content);
+                }
+                catch (Exception)
+                {
+                    try
+                    {
+                        result = JsonConvert.DeserializeObject<MessageReportResult>(response.Content);
+                    }
+                    catch (Exception)
+                    {
+                        result.messages = null;
+                    }
+                }
                 result.StatusCode = response.StatusCode;
                 result.StatusDescription = response.StatusDescription;
             }
