@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UpyunSMSSDK\UpyunSMSSDK.csproj">
-      <Project>{603683FC-4459-42BD-9C98-5EF0E905BABF}</Project>
+      <Project>{603683fc-4459-42bd-9c98-5ef0e905babf}</Project>
       <Name>UpyunSMSSDK</Name>
     </ProjectReference>
   </ItemGroup>

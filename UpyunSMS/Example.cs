@@ -38,7 +38,6 @@ namespace UpyunSMS
             {
                 Console.WriteLine("参数错误，没有获得任何返回的短信报表数据。");
             }
-
         }
     }
 }

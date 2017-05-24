@@ -14,7 +14,7 @@ namespace UpyunSMSSDK.SMS
 
         private const string _apiUrl = "https://sms-api.upyun.com/api/";
         private string _messageUrl = _apiUrl + "messages";
-        private string templateUrl = _apiUrl + "templates";
+        private string _templateUrl = _apiUrl + "templates";
 
         public string _token { get; set; }
 
@@ -26,10 +26,11 @@ namespace UpyunSMSSDK.SMS
         /// <summary>
         /// 发送验证码短信。
         /// </summary>
+        /// <param name="message">发送短信参数。</param>
         /// <returns></returns>
         public MessageResult SendMessages(Message message)
         {
-            var result = new MessageResult();
+            MessageResult result = null;
             var var = JsonConvert.SerializeObject(message);
             var para = new RequestParame(HttpMethod.POST, _messageUrl, _token, var);
             var response = new RequestHandler(para).GetResponse();
@@ -57,13 +58,47 @@ namespace UpyunSMSSDK.SMS
         }
 
         /// <summary>
+        /// 新增短信模板。
+        /// </summary>
+        /// <param name="template">短信模板参数。</param>
+        /// <returns></returns>
+        internal TemplateResult AddTemplate(Template template)
+        {
+            TemplateResult result = null;
+            var var = JsonConvert.SerializeObject(template);
+            var para = new RequestParame(HttpMethod.POST, _templateUrl, _token, var);
+            var response = new RequestHandler(para).GetResponse();
+            if (!string.IsNullOrWhiteSpace(response.Content))
+            {
+                try
+                {
+                    result.template = JsonConvert.DeserializeObject<TemplateResult.TemplateResultMeta>(response.Content);
+                }
+                catch (Exception)
+                {
+                    try
+                    {
+                        result = JsonConvert.DeserializeObject<TemplateResult>(response.Content);
+                    }
+                    catch (Exception)
+                    {
+                        result.template = null;
+                    }
+                }
+                result.StatusCode = response.StatusCode;
+                result.StatusDescription = response.StatusDescription;
+            }
+            return result;
+        }
+
+        /// <summary>
         /// 获取短信报表。
         /// </summary>
-        /// <param name="messageReport"></param>
+        /// <param name="messageReport">短信报表筛选条件。</param>
         /// <returns></returns>
         public MessageReportResult GetMessgesReport(MessageReport messageReport)
         {
-            var result = new MessageReportResult();
+            MessageReportResult result = null;
             var var = messageReport.GetURLParam();
             var para = new RequestParame(HttpMethod.GET, _messageUrl, _token, var);
             var response = new RequestHandler(para).GetResponse();

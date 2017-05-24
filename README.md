@@ -29,6 +29,12 @@ var messageReport = new MessageReport();
 var messageReportResult = client.GetMessagesReport(messageReport);
 ```
 
+### 新增短信模板
+```csharp
+var template = new Template(/*一些参数*/);
+var templateResult = client.AddTemplate(template);
+```
+
 ## 确定短信是否发送成功
 在返回的对象中，包含着```StatusCode```和```error_code```这两个属性,```StatusCode```是枚举类型```HttpStatusCode```:
 ```csharp

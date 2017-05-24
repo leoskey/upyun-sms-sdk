@@ -42,5 +42,14 @@ namespace UpyunSMSSDK
         public MessageReportResult GetMessagesReport(MessageReport messageReport) {
             return _smsClient.GetMessgesReport(messageReport);
         }
+
+        /// <summary>
+        /// 新增短信模板。
+        /// </summary>
+        /// <param name="template">短信模板参数。</param>
+        /// <returns></returns>
+        public TemplateResult AddTemplate(Template template) {
+            return _smsClient.AddTemplate(template);
+        }
     }
 }
